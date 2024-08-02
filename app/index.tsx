@@ -1,32 +1,47 @@
-import { Link } from "expo-router";
-import { Image, ScrollView, Text, View } from "react-native";
+import CustomButton from "@/components/CustomButton";
+import { router } from "expo-router";
+import { Image, ScrollView, StatusBar, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   return (
     <SafeAreaView className="h-full bg-background-dark">
-      <ScrollView contentContainerStyle={{ height: "100%" }}>
-        <View className="items-center justify-center w-full h-full gap-8 px-4">
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <View className="items-center justify-center flex-1 px-4">
           <Image
-            className="w-[130px] h-[84px]"
+            className="w-[130px] h-[84px] mt-10"
             source={require("../assets/images/foodlogo.png")}
             resizeMode="contain"
           />
 
           <Image
-            className="max-w-[300px] w-full h-[200px]"
+            className="w-full h-[200px] mt-6"
             source={require("../assets/images/eating.jpg")}
-            resizeMode="contain"
+            resizeMode="cover"
+            style={{ borderRadius: 15 }}
           />
 
-          <View className="relative ">
-            <Text className="text-3xl font-bold text-center text-white ">
-              Discover Endless Food bank with {""}
+          <View className="px-4 mt-8">
+            <Text className="text-3xl font-bold leading-tight text-center text-white">
+              Discover Endless Food Bank with{" "}
               <Text className="text-primary">FoodConnect</Text>
             </Text>
           </View>
+
+          <Text className="mb-8 text-sm font-normal text-center text-white mt-7">
+            Eat to live
+          </Text>
+
+          <CustomButton
+            title="Continue with Email"
+            handlePress={() => router.push("/sign-in")}
+            containerStyles=""
+            textStyles=""
+            isLoading={false}
+          />
         </View>
       </ScrollView>
+      <StatusBar backgroundColor={"#000000"} barStyle="light-content" />
     </SafeAreaView>
   );
 }
